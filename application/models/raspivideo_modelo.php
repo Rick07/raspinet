@@ -7,7 +7,7 @@ class Raspivideo_modelo extends CI_Model {
 		$this->load->database();
 	}
 
-	public function listarRaspiVideos()
+	public function listarRaspiVideos($jtSorting, $jtStartIndex, $jtPageSize)
 	{
 			$sql="SELECT
 				raspivideo.idraspivideo AS idraspivideo,
@@ -19,14 +19,29 @@ class Raspivideo_modelo extends CI_Model {
 				FROM
 				raspivideo
 				INNER JOIN raspberry ON raspivideo.raspimac = raspberry.mac
-				INNER JOIN state ON raspberry.estado = state.sCode";
+				INNER JOIN state ON raspberry.estado = state.sCode
+				ORDER BY
+				$jtSorting
+				LIMIT $jtStartIndex, $jtPageSize";
 		
 		$query = $this->db->query($sql);
 
 		return $query->result_array();
 	}
 
+	public function totalRaspiVideos()
+	{
+		$sql="SELECT
+				Count(raspivideo.idraspivideo) AS record
+				FROM
+				raspivideo
+				INNER JOIN raspberry ON raspivideo.raspimac = raspberry.mac
+				INNER JOIN state ON raspberry.estado = state.sCode";
 
+		$query = $this->db->query($sql);
+
+		return  $query->result_array();
+	}
 }
 
 /* End of file data_modelo.php */

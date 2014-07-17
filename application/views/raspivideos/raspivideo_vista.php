@@ -5,6 +5,11 @@
       var base_url = "<?=base_url()?>"; 
         $('#raspiVideosTabla').jtable({
             title: 'Datos generados',
+            paging: true,
+            pageSize: 5,
+            sorting: true,
+            multiSorting: true,
+            defaultSorting: 'idraspivideo ASC',
             messages: {
             noDataAvailable: 'No hay informacion disponible',
             pagingInfo: 'Mostrando {0}-{1} de {2} registros',

@@ -24,7 +24,18 @@ class Raspivideo extends CI_Controller {
     public function listarRaspiVideos()
     {
        $this->load->model('raspivideo_modelo');
-        $datos = $this->raspivideo_modelo->listarRaspiVideos();
+
+       $recordCount = $this->raspivideo_modelo->totalRaspiVideos();
+
+        foreach ($recordCount as $key) {
+            $record = $key['record'];
+        }
+
+        $jtSorting = $this->input->get('jtSorting', TRUE);
+        $jtStartIndex = $this->input->get('jtStartIndex', TRUE);
+        $jtPageSize = $this->input->get('jtPageSize', TRUE);
+
+        $datos = $this->raspivideo_modelo->listarRaspiVideos($jtSorting, $jtStartIndex, $jtPageSize);
         $data = array();
         
         foreach($datos as $key)
@@ -35,6 +46,7 @@ class Raspivideo extends CI_Controller {
         //Return result to jTable
         $jTableResult = array();
         $jTableResult['Result'] = "OK";
+        $jTableResult['TotalRecordCount'] = $record;
         $jTableResult['Records'] = $data;
         print json_encode($jTableResult);
     }
