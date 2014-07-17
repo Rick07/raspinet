@@ -28,7 +28,8 @@
           </li>
          </ul>
     </div>
-     <img src="<?php echo base_url();?>images/logotipo.png" alt="logotipo" height="85" width="254">
+     <img src="<?php echo base_url();?>images/logotipo.png" alt="logotipo" height="70" width="260">
+     <?php echo br(2); ?>
    <!-- Nav tabs -->
   <ul class="nav nav-tabs">
     <li class="active" id="dispositivos"><a href="#dispositivos" data-toggle="tab">Dispositivos</a></li>

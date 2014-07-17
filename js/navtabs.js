@@ -11,7 +11,7 @@ $(document).ready(function(){
   
     $('#monitor').click(function() {  
         $.ajax({  
-            url: 'monitor',  
+            url: 'raspivideo',  
             success: function(data) {  
                 $('#seccion').html(data);  
             }  

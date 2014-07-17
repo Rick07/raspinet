@@ -32,7 +32,7 @@
             <input type="text" id="ubicacion" name="ubicacion" class="form-control" placeholder="Ingrese la ubicación del dispositivo" required>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button id="cerrar" type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
             <input type="submit" class="btn btn-primary" value="Guardar">
           </div>
         </form>
